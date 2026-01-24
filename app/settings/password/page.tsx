@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 // Background asset URLs
 const bgVectorTop = 'https://www.figma.com/api/mcp/asset/68c895b2-519a-42a9-bc8c-9c77c70b559c';
 const bgVectorLeft = 'https://www.figma.com/api/mcp/asset/96372cb9-343f-43be-a203-f578e5c8964a';
