@@ -1,14 +1,69 @@
-'use client';
+"use client";
 
+import { useState, useRef } from "react";
 
 // Background asset URLs
-const bgVectorTop = 'https://www.figma.com/api/mcp/asset/68c895b2-519a-42a9-bc8c-9c77c70b559c';
-const bgVectorLeft = 'https://www.figma.com/api/mcp/asset/96372cb9-343f-43be-a203-f578e5c8964a';
-const bgVectorBottomRight1 = 'https://www.figma.com/api/mcp/asset/7b1b60e3-2665-4650-b5fd-12193db0d75b';
-const bgVectorCenter = 'https://www.figma.com/api/mcp/asset/920aa1b4-c975-43c6-bb71-0153c56ed70c';
-const bgVectorTopRight = 'https://www.figma.com/api/mcp/asset/fb53177e-f7ba-428b-b9bd-84df52fcf265';
+const bgVectorTop =
+  "https://www.figma.com/api/mcp/asset/68c895b2-519a-42a9-bc8c-9c77c70b559c";
+const bgVectorLeft =
+  "https://www.figma.com/api/mcp/asset/96372cb9-343f-43be-a203-f578e5c8964a";
+const bgVectorBottomRight1 =
+  "https://www.figma.com/api/mcp/asset/7b1b60e3-2665-4650-b5fd-12193db0d75b";
+const bgVectorCenter =
+  "https://www.figma.com/api/mcp/asset/920aa1b4-c975-43c6-bb71-0153c56ed70c";
+const bgVectorTopRight =
+  "https://www.figma.com/api/mcp/asset/fb53177e-f7ba-428b-b9bd-84df52fcf265";
 
 export default function ForgotPasswordPage() {
+  const [verificationCode, setVerificationCode] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const handleInputChange = (index: number, value: string) => {
+    // Only allow numeric input
+    if (!/^\d*$/.test(value)) return;
+
+    const newCode = [...verificationCode];
+    newCode[index] = value;
+    setVerificationCode(newCode);
+
+    // Auto-focus next input if value is entered and not the last input
+    if (value && index < 5) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
+    // Handle backspace to move to previous input
+    if (e.key === "Backspace" && !verificationCode[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, 6);
+    const newCode = [...verificationCode];
+
+    for (let i = 0; i < pastedData.length && i < 6; i++) {
+      newCode[i] = pastedData[i];
+    }
+
+    setVerificationCode(newCode);
+
+    // Focus the next empty input or the last input
+    const nextIndex = Math.min(pastedData.length, 5);
+    inputRefs.current[nextIndex]?.focus();
+  };
 
   return (
     <div className="relative w-full h-screen bg-white flex items-center justify-center overflow-hidden p-4">
@@ -20,6 +75,7 @@ export default function ForgotPasswordPage() {
             alt=""
             src={bgVectorTop}
             className="w-full h-full object-cover"
+            draggable="false"
           />
         </div>
 
@@ -29,6 +85,7 @@ export default function ForgotPasswordPage() {
             alt=""
             src={bgVectorLeft}
             className="w-full h-full object-cover"
+            draggable="false"
           />
         </div>
 
@@ -38,6 +95,7 @@ export default function ForgotPasswordPage() {
             alt=""
             src={bgVectorBottomRight1}
             className="w-full h-full object-cover"
+            draggable="false"
           />
         </div>
 
@@ -100,9 +158,16 @@ export default function ForgotPasswordPage() {
             {[...Array(6)].map((_, index) => (
               <input
                 key={index}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
                 type="text"
                 maxLength={1}
                 inputMode="numeric"
+                value={verificationCode[index]}
+                onChange={(e) => handleInputChange(index, e.target.value)}
+                onKeyDown={(e) => handleKeyDown(index, e)}
+                onPaste={handlePaste}
                 className="w-[37px] h-[55px] bg-[#f4f2f9] border border-[#a8d0e6] rounded-[2px] text-center text-[#1a1a1a] font-medium text-[20px] outline-none focus:border-[#6bbf59] focus:ring-1 focus:ring-[#6bbf59] transition-colors font-[family-name:_var(--font-manrope)]"
               />
             ))}
@@ -127,4 +192,3 @@ export default function ForgotPasswordPage() {
     </div>
   );
 }
-      
