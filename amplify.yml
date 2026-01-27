@@ -13,11 +13,14 @@ backend:
                     staging)
                       npx ampx pipeline-deploy --branch staging --app-id $AWS_APP_ID
                       ;;
+                    dev)
+                      npx ampx pipeline-deploy --branch dev --app-id $AWS_APP_ID
+                      ;;
                     pr-*)
                       npx ampx generate outputs --branch staging --app-id $AWS_APP_ID
                       ;;
                     *)
-                      npx ampx generate outputs --branch sandbox --app-id $AWS_APP_ID
+                      npx ampx generate outputs --branch dev --app-id $AWS_APP_ID
                       ;;
                   esac
 frontend:
