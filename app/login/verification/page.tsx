@@ -1,18 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-
-// Background asset URLs
-const bgVectorTop =
-  "https://www.figma.com/api/mcp/asset/68c895b2-519a-42a9-bc8c-9c77c70b559c";
-const bgVectorLeft =
-  "https://www.figma.com/api/mcp/asset/96372cb9-343f-43be-a203-f578e5c8964a";
-const bgVectorBottomRight1 =
-  "https://www.figma.com/api/mcp/asset/7b1b60e3-2665-4650-b5fd-12193db0d75b";
-const bgVectorCenter =
-  "https://www.figma.com/api/mcp/asset/920aa1b4-c975-43c6-bb71-0153c56ed70c";
-const bgVectorTopRight =
-  "https://www.figma.com/api/mcp/asset/fb53177e-f7ba-428b-b9bd-84df52fcf265";
+import LoginBackground from "../components/Background";
 
 export default function ForgotPasswordPage() {
   const [verificationCode, setVerificationCode] = useState([
@@ -66,60 +55,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-white flex items-center justify-center overflow-hidden p-4">
-      {/* Animated background container */}
-      <div className="absolute inset-0 bg-[#de5fb7] overflow-hidden">
-        {/* Top right vector */}
-        <div className="absolute -top-[124px] -right-[176px] w-[447px] h-[525px] overflow-hidden">
-          <img
-            alt=""
-            src={bgVectorTop}
-            className="w-full h-full object-cover"
-            draggable="false"
-          />
-        </div>
-
-        {/* Top left vector */}
-        <div className="absolute top-[21px] left-[18px] w-[271px] h-[355px] overflow-hidden">
-          <img
-            alt=""
-            src={bgVectorLeft}
-            className="w-full h-full object-cover"
-            draggable="false"
-          />
-        </div>
-
-        {/* Bottom right vector 1 */}
-        <div className="absolute bottom-[80px] -right-[198px] w-[406px] h-[410px] overflow-hidden">
-          <img
-            alt=""
-            src={bgVectorBottomRight1}
-            className="w-full h-full object-cover"
-            draggable="false"
-          />
-        </div>
-
-        {/* Center rotated vector */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[675px] h-[689px] flex items-center justify-center">
-          <div className="-rotate-30 w-[479px] h-[520px]">
-            <img
-              alt=""
-              src={bgVectorCenter}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Top right vector 2 */}
-        <div className="absolute -top-[41px] -right-[117px] w-[371px] h-[560px] overflow-hidden">
-          <img
-            alt=""
-            src={bgVectorTopRight}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
+    <LoginBackground>
       {/* Modal container */}
       <div className="relative z-10 bg-white rounded-2xl items shadow-lg p-6 md:p-10 w-full md:w-[856px] flex flex-col md:flex-row gap-5 md:gap-5 md:m-3">
         {/* Logo section */}
@@ -189,6 +125,6 @@ export default function ForgotPasswordPage() {
           </button>
         </div>
       </div>
-    </div>
+    </LoginBackground>
   );
 }
