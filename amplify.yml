@@ -1,4 +1,28 @@
 version: 1
+backend:
+    phases:
+        build:
+            commands:
+                - 'npm ci --cache .npm --prefer-offline'
+                - 'echo $AWS_BRANCH'
+                - |
+                  case "${AWS_BRANCH}" in
+                    main)
+                      npx ampx pipeline-deploy --branch main --app-id $AWS_APP_ID
+                      ;;
+                    staging)
+                      npx ampx pipeline-deploy --branch staging --app-id $AWS_APP_ID
+                      ;;
+                    dev)
+                      npx ampx pipeline-deploy --branch dev --app-id $AWS_APP_ID
+                      ;;
+                    pr-*)
+                      npx ampx generate outputs --branch staging --app-id $AWS_APP_ID
+                      ;;
+                    *)
+                      npx ampx generate outputs --branch dev --app-id $AWS_APP_ID
+                      ;;
+                  esac
 frontend:
   phases:
     preBuild:
