@@ -1,0 +1,9 @@
+@layer components {
+  .header-1 {
+    @apply font-manrope text-4xl font-bold leading-tight;
+  }
+
+  .header-2 {
+    @apply font-manrope text-3xl font-semibold;
+  }
+}
