@@ -31,7 +31,7 @@ export default function Logo({
 const config = variants[variant];
 
 return(
-    <div className={config.layout}>
+    <div className={`${config.layout} ${className}`}>
         <img 
             src="/AWSCCLogo.png" 
             className="w-full h-auto object-contain" 

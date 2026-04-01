@@ -10,10 +10,11 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="flex flex-col gap-[16px] bg-[#FFFFFF] px-[16] py-[24] rounded-[16px] w-[244px] min-h-[680px] h-min text-[#1a1a1a] font-[family-name:_var(--font-manrope)]">
+        <div className="flex flex-col gap-[16px] bg-[#FFFFFF] px-2 py-4 xl:px-[16] xl:py-[24] rounded-[20px] xl:rounded-[16px] md:w-[60px] xl:w-[244px] min-h-[680px] h-min text-[#1a1a1a] font-[family-name:_var(--font-manrope)]">
             {/* Header Section */}
             <div className="w-full h-fit overflow-hidden">
-                <Logo variant="header" className="h-auto w-full min-w-0 object-contain"/>
+                <Logo variant="header" className="hidden xl:flex h-auto w-full min-w-0 object-contain"/>
+                <Logo variant="logo" className="hidden md:block  xl:hidden h-auto w-full min-w-0 object-contain"/>
             </div>
             {/* Divider */}
             <div className="min-w-full h-[2px] bg-[#3B4951] rounded-full"></div>
@@ -28,7 +29,7 @@ export default function Sidebar() {
                                 className="w-[43px] h-auto object-contain" 
                             />
                         </div>
-                        <span className="nav-text h-fit w-full align-center justify center">{item.label}</span>
+                        <span className="hidden xl:block  nav-text h-fit w-full align-center justify center">{item.label}</span>
                     </div>
                 ))}
             </nav>

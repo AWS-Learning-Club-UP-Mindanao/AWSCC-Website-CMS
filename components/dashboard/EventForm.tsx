@@ -26,7 +26,7 @@ export default function EventForm() {
                 </div>
             </div>
             <div id='edit-section' className="flex flex-row gap-[32px] w-full h-full">
-                <div id='edit-modal' className="flex flex-col gap-[40px] p-[24px] flex-1 bg-white rounded-[12px]">
+                <div id='edit-modal' className="flex flex-col gap-[40px] p-[24px] flex-1 bg-white rounded-[12px] max-w-[1200px]">
                 <EditModal 
                     initialTitle="mock title" 
                     initialDescription="mock description"
