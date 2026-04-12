@@ -13,15 +13,15 @@ export default function Logo({variant = "logo", className = ""}: LogoProps) {
 		},
 		header: {
 			showText: true,
-			layout: "flex flex-row gap-[12px] w-full",
+			layout: "flex flex-row gap-[12px]",
 		},
 		title: {
 			showText: true,
 			layout: "flex flex-row gap-[10px]",
 		},
 		mobile: {
-			showText: false,
-			layout: "w-[286px] h-fit flex flex-col gap-[12px]",
+			showText: true,
+        layout: "flex flex-col items-center gap-[12px] w-full"
 		},
 	};
 
@@ -31,13 +31,13 @@ export default function Logo({variant = "logo", className = ""}: LogoProps) {
 		<div className={`${config.layout} ${className}`}>
 			<img
 				src='/AWSCCLogo.png'
-				className='object-contain xl:w-[70px] md:w-[40px]'
+				className='object-contain xl:w-[70px] md:w-[40px] w-[70px]'
 			/>
 
 			{config.showText && (
 				<span className='flex flex-col justify-center'>
 					<h1
-						className='whitespace-nowrap font-bold leading-tight font-manrope 
+						className='font-bold leading-tight font-manrope 
                                text-[16px]'
 					>
 						AWSCC UPMIN
