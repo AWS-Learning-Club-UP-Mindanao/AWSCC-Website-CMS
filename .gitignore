@@ -10,6 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 
+
 # testing
 /coverage
 
@@ -46,3 +47,6 @@ node_modules
 .amplify
 amplify_outputs*
 amplifyconfiguration*
+
+package-lock.json
+package-lock.json
