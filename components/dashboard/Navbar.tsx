@@ -13,7 +13,7 @@ export default function Sidebar() {
                 onClick={() => setOpen(true)}
                 className="md:hidden fixed top-[25px] left-[8px] z-39 p-[8px] rounded-full"
             >
-                <Logo variant="logo" 
+                <Logo variant="logo"
                         className="h-[40px] w-[40px]" />
             </button>
 
@@ -46,6 +46,7 @@ export default function Sidebar() {
                                 <img
                                     src='/nav-item-icon.svg'
                                     className='w-[21px] xl:w-[43px] h-auto object-contain'
+                                    alt={item.label}
                                 />
                             </div>
                             <span className='hidden xl:block   h-fit w-full align-center justify center'>
@@ -55,9 +56,18 @@ export default function Sidebar() {
                     ))}
                 </nav>
             </div>
+
+            {/* Mobile Drawer Backdrop */}
+            {open && (
+                <div
+                    className="fixed inset-0 bg-black/20 z-30 md:hidden"
+                    onClick={() => setOpen(false)}
+                />
+            )}
+
             {/* Mobile Drawer */}
             <div
-                className={`absolute flex flex-col left-0 top-0 w-full h-full z-40 bg-white transform transition-transform duration-300 px-[16px] py-[24px] ${
+                className={`fixed flex flex-col left-0 top-0 w-[80%] max-w-[300px] h-full z-40 bg-white transform transition-transform duration-300 px-[16px] py-[24px] ${
                     open ? "translate-x-0" : "-translate-x-full"
                 } md:hidden`}
             >
@@ -74,7 +84,7 @@ export default function Sidebar() {
                     <nav className="flex flex-col gap-[10px] p-[10px]">
                         {navItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-[12px]">
-                                <img src="/nav-item-icon.svg" className="w-[43px] h-[20px]" />
+                                <img src="/nav-item-icon.svg" className="w-[43px] h-[20px]" alt={item.label} />
                                 <span className="text-[24px]">{item.label}</span>
                             </div>
                         ))}
