@@ -15,10 +15,10 @@ const StatusModal = ({ onEditClick }: StatusModalProps) => {
           <h2 className="text-[18px] sm:text-[20px] font-medium text-[#1a1a1a]">
             Status
           </h2>
-          {/* Tablet-only EDIT button */}
+          {/* Mobile only: EDIT button (tablet+ uses header toggle, desktop shows both panels) */}
           <button
             onClick={onEditClick}
-            className="hidden md:block lg:hidden bg-[#7A9BB5] hover:bg-[#6A8BA5] text-white text-[14px] font-medium px-4 py-1.5 rounded-lg transition-colors"
+            className="md:hidden bg-[#7A9BB5] hover:bg-[#6A8BA5] text-white text-[14px] font-medium px-4 py-1.5 rounded-lg transition-colors"
           >
             EDIT
           </button>
@@ -31,7 +31,7 @@ const StatusModal = ({ onEditClick }: StatusModalProps) => {
               Draft
             </span>
           </div>
-          <button className="w-full bg-[#72c05b] hover:bg-[#64a950] text-white text-[18px] sm:text-[22px] font-medium px-[32px] sm:px-[52px] py-3 sm:py-4 rounded-xl transition-colors uppercase tracking-wide">
+          <button className="w-full text-center bg-[#72c05b] hover:bg-[#64a950] text-white text-[18px] sm:text-[22px] font-medium px-[32px] sm:px-[52px] lg:px-6 py-3 sm:py-4 rounded-xl transition-colors uppercase tracking-wide">
             PUBLISH
           </button>
         </div>

@@ -9,7 +9,7 @@ const manrope = Manrope({
 export default function CreateEventPage() {
         return (
         <main className={`${manrope.className} text-[#1a1a1a] min-h-screen bg-[#EBF0FF] flex justify-center`}>
-            <div className="w-full max-w-[1440px] px-[29px] py-[14px] flex flex-row gap-[10px]">
+            <div className="w-full max-w-[1440px] px-4 lg:px-[29px] py-[14px] flex flex-row gap-[10px]">
                 <Navbar/>
                 <EventForm/>
             </div>

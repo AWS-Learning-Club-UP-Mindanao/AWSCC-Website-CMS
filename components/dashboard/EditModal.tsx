@@ -43,7 +43,7 @@ export default function EditModal({
 
       {/* Title Section */}
       <div className="flex flex-col gap-[8px] sm:gap-[12px]">
-        <label className="font-medium text-[#1A1A1A] text-[18px] sm:text-[20px] flex flex-row gap-[4px] items-center">
+        <label className="hidden md:flex font-medium text-[#1A1A1A] text-[18px] sm:text-[20px] flex-row gap-[4px] items-center">
           Title
           <span className="bg-[#FCEFF1] text-[#E05A6F] px-2 py-0.5 rounded text-[12px]">(required)</span>
         </label>
